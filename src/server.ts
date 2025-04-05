@@ -1,7 +1,4 @@
-import { json } from "stream/consumers";
-
-import productsRouters from "./routes/productRouter";
-import { getAllProducts } from "./services/product-service";
+import productRouters from "./routes/productRouter";
 
 const express = require("express");
 
@@ -12,9 +9,7 @@ const port = 3000;
 app.use(express.json());
 
 // Routes
-app.get("/products", (req: any, res: any) => {
-  res.json(getAllProducts());
-});
+app.use("/products", productRouters);
 
 // Start the server
 app.listen(port, () => {
